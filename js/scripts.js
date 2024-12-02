@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000'; // Cambia esto a la URL real de tu backend
+const API_URL = 'https://vehiculos-backend.onrender.com'; // Cambia esto a la URL real de tu backend
 
 // Función para cargar vehículos
 async function cargarVehiculos() {
