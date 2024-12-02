@@ -1,14 +1,39 @@
-const API_URL = 'https://vehiculos-backend.onrender.com'; // Ajusta según tu despliegue
+const API_URL = 'http://localhost:3000'; // Cambia esto a la URL real de tu backend
 
 // Función para cargar vehículos
 async function cargarVehiculos() {
     try {
-        const response = await fetch(`https://vehiculos-backend.onrender.com/api/vehiculos`);
+        console.log('Intentando cargar vehículos desde:', API_URL);
+        
+        const response = await fetch(`${API_URL}/api/vehiculos`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        console.log('Respuesta del servidor:', response);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error en la respuesta:', errorText);
+            throw new Error(`HTTP error! status: ${response.status}. ${errorText}`);
+        }
+
         const vehiculos = await response.json();
+        console.log('Vehículos recibidos:', vehiculos);
+
         const tableBody = document.getElementById('vehicleTableBody');
         
         // Limpiar tabla antes de cargar
         tableBody.innerHTML = '';
+
+        if (vehiculos.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td colspan="4">No hay vehículos registrados</td>`;
+            tableBody.appendChild(row);
+            return;
+        }
 
         vehiculos.forEach(vehiculo => {
             const row = document.createElement('tr');
@@ -23,15 +48,20 @@ async function cargarVehiculos() {
             tableBody.appendChild(row);
         });
     } catch (error) {
-        console.error('Error al cargar vehículos:', error);
-        alert('Error al cargar vehículos');
+        console.error('Error detallado al cargar vehículos:', error);
+        
+        const tableBody = document.getElementById('vehicleTableBody');
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="4">Error al cargar vehículos: ${error.message}</td>`;
+        tableBody.innerHTML = '';
+        tableBody.appendChild(row);
     }
 }
 
 // Función para eliminar vehículo
 async function eliminarVehiculo(patente) {
     try {
-        const response = await fetch(`https://vehiculos-backend.onrender.com/api/vehiculos/${patente}`, {
+        const response = await fetch(`${API_URL}/api/vehiculos/${patente}`, {
             method: 'DELETE'
         });
 
@@ -65,7 +95,7 @@ document.getElementById('vehicleForm').addEventListener('submit', async function
     const vehicleData = { patente, marca, modelo };
 
     try {
-        const response = await fetch(`https://vehiculos-backend.onrender.com/api/vehiculos`, {
+        const response = await fetch(`${API_URL}/api/vehiculos`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
