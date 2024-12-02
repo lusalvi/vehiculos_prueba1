@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+li{
+    list-style: none;
+    padding: 10px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #0c0c0c;
+    color: white;
+    padding: 50px;
+    font-size: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.nav-item {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 1;
+    background-color: white;
+    padding: 50px;
+}
+
+.header {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #0a0a0a;
+    border: 1px solid #a0a0a7;
+    border-radius: 10px;
+    padding: 50px;
+    margin-top: 40px;
+}
+
+.card h2{
+    color: white;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b3a5a5;
+    border-radius: 4px;
+    background-color: #eeeef8;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+.btn {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.btn-primary {
+    background-color: #bebfe4;
+    color: rgb(63, 52, 52);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+#ingresar-vehiculo {
+    margin-top: auto;
+    background-color: #a0a0a7;
+    color: #fff8f8;
+}
+
+/* Estilos para la tabla de vehículos */
+#vehicleTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#vehicleTable th, #vehicleTable td {
+    border: 1px solid #b3a5a5;
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+#vehicleTable th {
+    background-color: #0a0a0a;
+}
+
+#vehicleTable tr:nth-child(even) {
+    background-color: #161617;
+}
+
+#vehicleTable tr:hover {
+    background-color: #2a2a2a;
+}
+
+/* Botón de eliminar en la tabla */
+#vehicleTable .btn-primary {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#vehicleTable .btn-primary:hover {
+    background-color: #ff6666;
+}
