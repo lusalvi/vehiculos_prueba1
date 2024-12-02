@@ -3,7 +3,7 @@ const API_URL = 'https://vehiculos-backend.onrender.com'; // Ajusta según tu de
 // Función para cargar vehículos
 async function cargarVehiculos() {
     try {
-        const response = await fetch(`${API_URL}/api/vehiculos`);
+        const response = await fetch(`https://vehiculos-backend.onrender.com/api/vehiculos`);
         const vehiculos = await response.json();
         const tableBody = document.getElementById('vehicleTableBody');
         
@@ -31,7 +31,7 @@ async function cargarVehiculos() {
 // Función para eliminar vehículo
 async function eliminarVehiculo(patente) {
     try {
-        const response = await fetch(`${API_URL}/api/vehiculos/${patente}`, {
+        const response = await fetch(`https://vehiculos-backend.onrender.com/api/vehiculos/${patente}`, {
             method: 'DELETE'
         });
 
@@ -65,7 +65,7 @@ document.getElementById('vehicleForm').addEventListener('submit', async function
     const vehicleData = { patente, marca, modelo };
 
     try {
-        const response = await fetch(`${API_URL}/api/vehiculos`, {
+        const response = await fetch(`https://vehiculos-backend.onrender.com/api/vehiculos`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
